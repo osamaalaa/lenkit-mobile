@@ -17,7 +17,7 @@ const HomeScreen = ({navigation}) => {
                             
                 <Text style={styles.btnText}>Join Now!</Text>
             </TouchableOpacity>
-
+                
             
             </ImageBackground>
         </View>

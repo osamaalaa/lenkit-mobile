@@ -2,7 +2,9 @@
 import React, {useState} from 'react';
 
 import {Slider, Text, StyleSheet, View, TextInput , Image , TouchableOpacity , Button} from 'react-native';
-const LoginComp = ()=>{
+
+import Components from '../src/screens/ComponentsScreen';
+const LoginComp = ({ navigation })=>{
     const [value, setValue] = useState(0);
     return (
         <View style={styles.container}>
@@ -19,7 +21,8 @@ const LoginComp = ()=>{
             style={styles.inputStyle}
           />
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() =>
+                           navigation.navigate('Test')} >
                 <Text style={styles.btnText}>Sign in</Text>
             </TouchableOpacity>
             
