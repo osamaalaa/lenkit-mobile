@@ -7,7 +7,7 @@ const ComponentsScreen = ()=>{
   const osamaGetData = async () => {
     try {
       const response = await axios.get(
-        'http://192.168.1.5:4000/admin/website-info'
+        'http://192.168.1.5:4700/admin/website-info'
       );
       alert(JSON.stringify(response.data));
     } catch (error) {
