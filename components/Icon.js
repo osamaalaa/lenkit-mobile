@@ -5,12 +5,12 @@ import { Icon } from 'galio-framework';
 
 import osamaConfig from '../assets/config/osama-config.json';
 
-const ArgonExtra = require('../assets/font/argon.ttf');
+const ArgonExtra = require('../assets/fonts/argon.ttf');
 
 
 const IconArgonExtra = createIconSetFromIcoMoon(osamaConfig, 'ArgonExtra');
 
-class IconExtra extends React.Component {
+class IconS extends React.Component {
   state = {
     fontLoaded: false,
   }
@@ -33,5 +33,4 @@ class IconExtra extends React.Component {
     return null;
   }
 }
-
-export {IconExtra};
+export default IconS ;

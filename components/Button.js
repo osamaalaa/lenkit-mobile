@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {ArButton};
+export default ArButton;

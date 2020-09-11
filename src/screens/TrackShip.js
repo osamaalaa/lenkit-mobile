@@ -1,167 +1,124 @@
-import React from "react";
+import React  from "react";
+
+
 import {
   StyleSheet,
   ImageBackground,
   Dimensions,
   StatusBar,
-  KeyboardAvoidingView
+  Button,
+  TouchableOpacity,
+  KeyboardAvoidingView , 
+  TextInput
 } from "react-native";
-import { Block, Checkbox, Text, theme } from "galio-framework";
-
-import  {ArButton} from "../../components/index";
-import  {ArIcon} from "../../components/index";
-import  {ArInput} from "../../components/index";
+import { Block, Checkbox, Text, theme , Input} from "galio-framework";
 
 import lenkitTheme from "../../constants/Theme";
 
+import axios from 'axios';
+
 const { width, height } = Dimensions.get("screen");
 
-const TrackShip = ()=>{
+import  IconS  from "../../components/Icon";
+
+class TrackShip extends React.Component {
+
+constructor(props) {
+    super(props);
+    // this.handleChange= this.handleChange.bind(this);
+
+    this.state = {
+        shipValue: '',
+        fontLoaded: false,
+    
+      }
+  }
 
 
-        return (
-            <Block flex middle>
-            <StatusBar hidden />
+ _handlePress = async () => {
+    try {
+      const response = await axios.get(
+        'http://192.168.1.5:4700/admin/website-info'
+      );
+      alert(JSON.stringify(response.data));
+      console.log(this.state.shipValue)
+    } catch (error) {
+      // handle error
+      console.log("osamaerr")
+      alert(error.message);
+    }
+  };
+
+render() {
+   
+    return (
+        <Block flex middle>
+        <StatusBar hidden />
+        <ImageBackground
+          source={require('../../assets/splash.png')}
+          style={{ width, height, zIndex: 1 }}
+        >
+          <Block flex middle>
+            <Block style={styles.registerContainer}>
+
             <ImageBackground
-              source={require('../../assets/lenkit-first.jpeg')}
-              style={{ width, height, zIndex: 1 }}
-            >
-              <Block flex middle>
-                <Block style={styles.registerContainer}>
-                  <Block flex={0.25} middle style={styles.socialConnect}>
-                    <Text color="#8898AA" size={12}>
-                      Sign up with
-                    </Text>
-                    <Block row style={{ marginTop: theme.SIZES.BASE }}>
-                      <ArButton style={{ ...styles.socialButtons, marginRight: 30 }}>
-                        <Block row>
-                          <ArIcon
-                            name="logo-github"
-                            family="Ionicon"
-                            size={14}
-                            color={"black"}
-                            style={{ marginTop: 2, marginRight: 5 }}
-                          />
-                          <Text style={styles.socialTextButtons}>GITHUB</Text>
-                        </Block>
-                      </ArButton>
-                      <ArButton style={styles.socialButtons}>
-                        <Block row>
-                          <ArIcon
-                            name="logo-google"
-                            family="Ionicon"
-                            size={14}
-                            color={"black"}
-                            style={{ marginTop: 2, marginRight: 5 }}
-                          />
-                          <Text style={styles.socialTextButtons}>GOOGLE</Text>
-                        </Block>
-                      </ArButton>
-                    </Block>
-                  </Block>
-                  <Block flex>
-                    <Block flex={0.17} middle>
-                      <Text color="#8898AA" size={12}>
-                        Or sign up the classic way
-                      </Text>
-                    </Block>
-                    <Block flex center>
-                      <KeyboardAvoidingView
-                        style={{ flex: 1 }}
-                        behavior="padding"
-                        enabled
-                      >
-                        <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                          <ArInput
-                            borderless
-                            placeholder="Name"
-                            iconContent={
-                              <ArIcon
-                                size={16}
-                                color={lenkitTheme.COLORS.ICON}
-                                name="hat-3"
-                                family="ArgonExtra"
-                                style={styles.inputIcons}
-                              />
-                            }
-                          />
-                        </Block>
-                        <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                          <ArInput
-                            borderless
-                            placeholder="Email"
-                            iconContent={
-                              <ArIcon
-                                size={16}
-                                color={lenkitTheme.COLORS.ICON}
-                                name="ic_mail_24px"
-                                family="ArgonExtra"
-                                style={styles.inputIcons}
-                              />
-                            }
-                          />
-                        </Block>
-                        <Block width={width * 0.8}>
-                          <ArInput
-                            password
-                            borderless
-                            placeholder="Password"
-                            iconContent={
-                              <ArIcon
-                                size={16}
-                                color={lenkitTheme.COLORS.ICON}
-                                name="padlock-unlocked"
-                                family="ArgonExtra"
-                                style={styles.inputIcons}
-                              />
-                            }
-                          />
-                          <Block row style={styles.passwordCheck}>
-                            <Text size={12} color={lenkitTheme.COLORS.MUTED}>
-                              password strength:
-                            </Text>
-                            <Text bold size={12} color={lenkitTheme.COLORS.SUCCESS}>
-                              {" "}
-                              strong
-                            </Text>
-                          </Block>
-                        </Block>
-                        <Block row width={width * 0.75}>
-                          <Checkbox
-                            checkboxStyle={{
-                              borderWidth: 3
-                            }}
-                            color={lenkitTheme.COLORS.PRIMARY}
-                            label="I agree with the"
-                          />
-                          <ArButton
-                            style={{ width: 100 }}
-                            color="transparent"
-                            textStyle={{
-                              color: lenkitTheme.COLORS.PRIMARY,
-                              fontSize: 14
-                            }}
-                          >
-                            Privacy Policy
-                          </ArButton>
-                        </Block>
-                        <Block middle>
-                          <ArButton color="primary" style={styles.createButton}>
-                            <Text bold size={14} color={lenkitTheme.COLORS.WHITE}>
-                              CREATE ACCOUNT
-                            </Text>
-                          </ArButton>
-                        </Block>
-                      </KeyboardAvoidingView>
-                    </Block>
-                  </Block>
-                </Block>
+          source={require('../../assets/lenkit-first.jpeg')}
+          style={{ width, height, zIndex: 1 }}
+        >
+              <Block flex={0.1} style={styles.socialConnect}>
+                <Text color="white" size={12}>
+                  Lenkit@Lenkit.com
+                </Text>
+                {/* <IconS
+                        name="logo-google"
+                        family="ArgonExtra"
+                        size={14}
+                        color={"black"}
+                        style={{ marginTop: 2, marginRight: 5 }}
+                      /> */}
+    
               </Block>
-            </ImageBackground>
-          </Block> )
-};
+             
+
+              <Block>
+                 <Input placeholder="Track Your Ship" rounded color={theme.COLORS.SUCCESS} style={styles.inputShip}  returnKeyLabel = {"next"}
+                     onChangeText={(text) => this.setState({shipValue:text})} />
+                 {/* <TextInput ref= {(el) => { osama = el; }} onchangeText = {osama => onChangeText(osama)} value={osama} /> */}
+                 <TouchableOpacity style={styles.button} onPress={() => 
+                     this._handlePress()
+               } >
+                
+                         <Text style={styles.btnText}>GetData</Text>
+
+                 </TouchableOpacity>    
+                 {/* <Text>{osama}</Text> */}
+
+
+              </Block>
+              </ImageBackground>
+
+          </Block>
+          </Block>
+        </ImageBackground>
+      </Block>
+    );
+  }
+}
+
+
 
 const styles = StyleSheet.create({
+   
+        inputShip: {
+            paddingTop: 13,
+            top: 300 ,
+            width: width * 0.9,
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 100/2,
+        },
+        
+
     registerContainer: {
       width: width * 0.9,
       height: height * 0.78,
@@ -178,7 +135,7 @@ const styles = StyleSheet.create({
       overflow: "hidden"
     },
     socialConnect: {
-      backgroundColor: lenkitTheme.COLORS.WHITE,
+      backgroundColor: "#990000",
       borderBottomWidth: StyleSheet.hairlineWidth,
       borderColor: "#8898AA"
     },
@@ -211,7 +168,22 @@ const styles = StyleSheet.create({
     createButton: {
       width: width * 0.5,
       marginTop: 25
-    }
+    },
+      button: {
+        // width: 300,
+        marginTop: 20,
+        top: 400,
+      //   marginLeft: 110,
+        backgroundColor: "#990000",
+        padding: 15,
+        borderRadius: 50,
+      },
+      btnText: {
+        color: "white",
+        fontSize: 20,
+        justifyContent: "center",
+        textAlign: "center",
+      }
   });
 
 export default TrackShip;

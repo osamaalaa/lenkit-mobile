@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export  {ArInput};
+export default ArInput;
