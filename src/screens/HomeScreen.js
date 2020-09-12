@@ -33,38 +33,28 @@ const HomeScreen = ({navigation}) => {
       <StatusBar hidden />
       <Block flex center>
       <ImageBackground
-          source={require('../../assets/background-startup.jpg')}
+          source={require('../../assets/del_man.jpeg')}
           style={{ height, width, zIndex: 1 }}
         />
       </Block>
-      <Block center>
+      {/* <Block center>
         <Image source={require('../../assets/linket_final.png')} style={styles.logo} />
-      </Block>
+      </Block> */}
       <Block flex space="between" style={styles.padded}>
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
+             
               <Block>
-                <Text color="white" size={60}>
-                  Lenkit
-                </Text>
+                
               </Block>
-              <Block>
-                <Text color="white" size={60}>
-                  Application
-                </Text>
-              </Block>
-              <Block style={styles.subTitle}>
-                <Text color="white" size={16}>
-                 Welcome to Lenkit application for online shipping
-                </Text>
-              </Block>
+            
             </Block>
             <Block center>
               <Button
                 style={styles.button}
                 color={lenkitTheme.COLORS.SECONDARY}
                 onPress={() => navigation.navigate("Track")}
-                textStyle={{ color: lenkitTheme.COLORS.BLACK }}
+                textStyle={{ color: lenkitTheme.COLORS.WHITE }}
               >
                 Get Started
               </Button>
@@ -92,7 +82,8 @@ const styles = StyleSheet.create({
     width: width - theme.SIZES.BASE * 4,
     height: theme.SIZES.BASE * 3,
     shadowRadius: 0,
-    shadowOpacity: 0
+    shadowOpacity: 0,
+    backgroundColor: "#990000",
   },
   logo: {
     width: 200,
@@ -102,10 +93,11 @@ const styles = StyleSheet.create({
     marginTop: '-50%'
   },
   title: {
-    marginTop:'-5%'
+    marginTop:'80%'
   },
   subTitle: {
-    marginTop: 20
+    marginTop: 20,
+    color:theme.COLORS.BLACK,
   }
 });
 export default HomeScreen;

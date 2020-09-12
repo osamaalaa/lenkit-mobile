@@ -9,18 +9,23 @@ import {
   Button,
   TouchableOpacity,
   KeyboardAvoidingView , 
-  TextInput
+  TextInput,
+  Image,
+  Linking 
 } from "react-native";
 import { Block, Checkbox, Text, theme , Input} from "galio-framework";
 
 import lenkitTheme from "../../constants/Theme";
 
 import axios from 'axios';
+import { AppLoading } from 'expo';
 
 const { width, height } = Dimensions.get("screen");
 
-import  IconS  from "../../components/Icon";
-
+// import  IconS  from "../../components/Icon";
+// import { Icon } from 'galio-framework';
+import { Icon } from 'react-native-elements'
+import { Ionicons } from '@expo/vector-icons'
 class TrackShip extends React.Component {
 
 constructor(props) {
@@ -30,15 +35,48 @@ constructor(props) {
     this.state = {
         shipValue: '',
         fontLoaded: false,
+        Data:[],
+        website_e_mail:'',
+        website_phone_number: '',
+        website_whatsapp: '',
+        website_instagram: '',
+        website_twitter: '',
+        website_facebook: '',
+        // isFontLoaded: false
     
       }
   }
 
+  async componentDidMount(){
+  try {
+    const response = await axios.get(
+      'http://192.168.1.2:4700/admin/website-info'
+    );
+    
+ 
+   //alert(JSON.stringify(response.data[0].website_e_mail));
+  // alert(JSON.stringify(response.data[0].website_e_mail).replace(/\"/g, ""));
+ // this.setState({Data:JSON.stringify(response.data[0])})
+ this.setState({
+  website_e_mail:JSON.stringify(response.data[0].website_e_mail).replace(/\"/g, ""),
+  website_phone_number:JSON.stringify(response.data[0].website_phone_number).replace(/\"/g, "")})
+ //console.log("data",this.state.website_e_mail)
+  } catch (error) {
+    // handle error
+    console.log("osamaerr")
+    alert(error.message);
+  }
+}
+// For Font Test
+// async componentWillMount() {
+//   await Font.loadAsync({ 'MaterialIcons': require('@expo/vector-icons/fonts/MaterialIcons.ttf') })
+//   this.setState({ isFontLoaded: true })
+// }
 
  _handlePress = async () => {
     try {
       const response = await axios.get(
-        'http://192.168.1.5:4700/admin/website-info'
+        'http://192.168.1.2:4700/admin/website-info'
       );
       alert(JSON.stringify(response.data));
       console.log(this.state.shipValue)
@@ -51,7 +89,8 @@ constructor(props) {
 
 render() {
    
-    return (
+  // if(this.state.isFontLoaded) {
+     return (
         <Block flex middle>
         <StatusBar hidden />
         <ImageBackground
@@ -62,13 +101,20 @@ render() {
             <Block style={styles.registerContainer}>
 
             <ImageBackground
-          source={require('../../assets/lenkit-first.jpeg')}
-          style={{ width, height, zIndex: 1 }}
+          source={require('../../assets/t2.jpeg')}
+          style={styles.img}
         >
               <Block flex={0.1} style={styles.socialConnect}>
-                <Text color="white" size={12}>
-                  Lenkit@Lenkit.com
+
+                <Text  color="white" size={15} style={styles.website_e_mail}
+                onPress={() => Linking.openURL('http://google.com')}>
+                {this.state.website_e_mail}
                 </Text>
+                <Text color="white" size={15} style={styles.website_phone_number}
+                onPress={() => Linking.openURL(`tel:${this.state.website_phone_number}`)}>
+                  {this.state.website_phone_number}
+                </Text>
+               
                 {/* <IconS
                         name="logo-google"
                         family="ArgonExtra"
@@ -81,14 +127,14 @@ render() {
              
 
               <Block>
-                 <Input placeholder="Track Your Ship" rounded color={theme.COLORS.SUCCESS} style={styles.inputShip}  returnKeyLabel = {"next"}
+                 <Input placeholder="Shipment ID" rounded color={theme.COLORS.ERROR} style={styles.inputShip}  returnKeyLabel = {"next"}
                      onChangeText={(text) => this.setState({shipValue:text})} />
                  {/* <TextInput ref= {(el) => { osama = el; }} onchangeText = {osama => onChangeText(osama)} value={osama} /> */}
                  <TouchableOpacity style={styles.button} onPress={() => 
                      this._handlePress()
                } >
                 
-                         <Text style={styles.btnText}>GetData</Text>
+                         <Text style={styles.btnText}>Track your Shipment</Text>
 
                  </TouchableOpacity>    
                  {/* <Text>{osama}</Text> */}
@@ -102,7 +148,19 @@ render() {
         </ImageBackground>
       </Block>
     );
-  }
+              } //endif
+
+              // else{
+              //   return (
+              //     <AppLoading
+              //       startAsync={this._cacheResourcesAsync}
+              //       onFinish={() => this.setState({ isReady: true })}
+              //       onError={console.warn}
+              //     />
+              //   ); }
+                
+              //     }
+  
 }
 
 
@@ -111,14 +169,27 @@ const styles = StyleSheet.create({
    
         inputShip: {
             paddingTop: 13,
-            top: 300 ,
-            width: width * 0.9,
+            top: 535 ,
+            width: width * 0.8,
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 100/2,
+            marginLeft: 10
         },
-        
-
+        img:{
+          width: width * 0.9,
+           height:660,
+           zIndex: 1
+        },
+        website_e_mail:{
+              marginLeft:40,
+              marginTop:13,
+              width:116,
+        },
+        website_phone_number:{
+          marginLeft:200,
+          marginTop:-21
+    },
     registerContainer: {
       width: width * 0.9,
       height: height * 0.78,
@@ -171,8 +242,9 @@ const styles = StyleSheet.create({
     },
       button: {
         // width: 300,
-        marginTop: 20,
-        top: 400,
+        width: width * 0.9,
+        marginTop: 85,
+        top: 450,
       //   marginLeft: 110,
         backgroundColor: "#990000",
         padding: 15,
