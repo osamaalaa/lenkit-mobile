@@ -4,15 +4,34 @@ import {  StyleSheet  , View , TouchableOpacity , ImageBackground , Image,  Stat
 import { Block, Button, Text, theme } from "galio-framework";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
+import { Font } from 'expo';
 const { height, width } = Dimensions.get("screen");
 
 
 import lenkitTheme from "../../constants/Theme";
 
+
 const HomeScreen = ({navigation}) => {
+  const [isLoaded] = useFonts({
+    "fontawesome" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/fontawesome.ttf"),
+    "Raleway-Black" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/Raleway-Black.ttf"),
+    "Raleway-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/Raleway-SemiBold.ttf"),
+    "Raleway-Medium" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/Raleway-Medium.ttf"),
+
+    
+    "argon": require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/argon.ttf"),
+   "SourceSansPro-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-SemiBold.ttf"),
+   "SourceSansPro-ExtraLightItalic" :
+    require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-ExtraLightItalic.ttf"),
+  
+    
+  });
     // console.log(props.navigation);
-  return ( 
+    if (!isLoaded) {
+      return <AppLoading />;
+    } else {return ( 
       // <View style={styles.container}>
       //  <ImageBackground source={require('../../assets/lenkit-first.jpeg')} style={styles.image}>
       //          {/* <Text style={styles.text}>Welcome To Linkit</Text> */}
@@ -32,10 +51,15 @@ const HomeScreen = ({navigation}) => {
       <Block flex style={styles.container}> 
       <StatusBar hidden />
       <Block flex center>
-      <ImageBackground
-          source={require('../../assets/del_man.jpeg')}
-          style={{ height, width, zIndex: 1 }}
-        />
+      {/* <ImageBackground
+          source={require('../../assets/linket_finalTinyLogo.png')}
+          style={styles.img}
+          
+        /> */}
+         <Image
+        style={styles.tinyLogo}
+        source={require('../../assets/linket_finalTinyLogo.png')}
+      />
       </Block>
       {/* <Block center>
         <Image source={require('../../assets/linket_final.png')} style={styles.logo} />
@@ -43,9 +67,9 @@ const HomeScreen = ({navigation}) => {
       <Block flex space="between" style={styles.padded}>
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
-             
+               <Text  style={styles.subTitle} italic>Welcome To Linkit</Text> 
               <Block>
-                
+            {/* <Text style={{ fontFamily: "fontawesome" }}>Hello World</Text> */}
               </Block>
             
             </Block>
@@ -65,12 +89,19 @@ const HomeScreen = ({navigation}) => {
 
 
     );
+    }
 };
 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.COLORS.BLACK
+    backgroundColor: theme.COLORS.WHITE
+  },
+  tinyLogo:{
+     width: 400,
+    height: 200,
+    top:200,
+    
   },
   padded: {
     paddingHorizontal: theme.SIZES.BASE * 2,
@@ -96,8 +127,14 @@ const styles = StyleSheet.create({
     marginTop:'80%'
   },
   subTitle: {
-    marginTop: 20,
-    color:theme.COLORS.BLACK,
+    // marginTop: 20,
+    top:-160,
+    color:"#C81717",      
+    left:1,
+    fontSize:37,
+    fontWeight:"bold",
+    fontFamily:"monospace",
+
   }
 });
 export default HomeScreen;
