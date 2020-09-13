@@ -6,6 +6,7 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import Components from './src/screens/ComponentsScreen'
 import TrackShip from './src/screens/TrackShip';
+import { useFonts } from '@use-expo/font';
 
 const navigator = createStackNavigator(
 

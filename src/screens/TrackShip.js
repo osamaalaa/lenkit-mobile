@@ -59,8 +59,14 @@ constructor(props) {
  // this.setState({Data:JSON.stringify(response.data[0])})
  this.setState({
   website_e_mail:JSON.stringify(response.data[0].website_e_mail).replace(/\"/g, ""),
-  website_phone_number:JSON.stringify(response.data[0].website_phone_number).replace(/\"/g, "")})
- //console.log("data",this.state.website_e_mail)
+  website_phone_number:JSON.stringify(response.data[0].website_phone_number).replace(/\"/g, ""),
+  website_instagram:JSON.stringify(response.data[0].website_instagram).replace(/\"/g, ""),
+  website_facebook:JSON.stringify(response.data[0].website_facebook).replace(/\"/g, ""),
+  website_whatsapp:JSON.stringify(response.data[0].website_whatsapp).replace(/\"/g, ""),
+
+})
+ 
+  //console.log("data",this.state.website_e_mail)
   } catch (error) {
     // handle error
     console.log("osamaerr")
@@ -108,12 +114,52 @@ render() {
 
                 <Text  color="white" size={15} style={styles.website_e_mail}
                 onPress={() => Linking.openURL('http://google.com')}>
-                {this.state.website_e_mail}
+                
+                <Image
+        style={styles.mailIcon}
+        source={require('../../assets/mail6.png')}
+      />
+                {"  "+this.state.website_e_mail}
                 </Text>
+       
                 <Text color="white" size={15} style={styles.website_phone_number}
                 onPress={() => Linking.openURL(`tel:${this.state.website_phone_number}`)}>
-                  {this.state.website_phone_number}
+                            <Image
+        style={styles.Icon}
+        source={require('../../assets/phone2.png')}
+      />
+                  {"  "+this.state.website_phone_number}
+               
                 </Text>
+
+                {/* **************************** 3ICons *****************************/}
+                <Text color="white" size={15} style={styles.Instgram}
+                onPress={() => Linking.openURL(`${this.state.website_instagram}`)}>
+                            <Image
+        style={styles.Icon}
+        source={require('../../assets/instagram-sketched.png')}
+      />
+                  {"  "}
+               
+                </Text>
+
+                
+                <Text color="white" size={15} style={styles.Whatsapp}
+                onPress={() => Linking.openURL(`${this.state.website_facebook}`)}>
+                             <Image
+        style={styles.Icon}
+        source={require('../../assets/facebook.png')}
+      />
+       {"  "}
+                            <Image
+                            
+        style={styles.Icon}
+        source={require('../../assets/whatsapp2.png')}
+      />
+                  {"  "}
+                
+                </Text>
+
                
                 {/* <IconS
                         name="logo-google"
@@ -128,7 +174,7 @@ render() {
 
               <Block>
                  <Input placeholder="Shipment ID" rounded color={theme.COLORS.ERROR} style={styles.inputShip}  returnKeyLabel = {"next"}
-                     onChangeText={(text) => this.setState({shipValue:text})} />
+                     onChangeText={(text) => this.setState({shipValue:text})}  />
                  {/* <TextInput ref= {(el) => { osama = el; }} onchangeText = {osama => onChangeText(osama)} value={osama} /> */}
                  <TouchableOpacity style={styles.button} onPress={() => 
                      this._handlePress()
@@ -181,14 +227,37 @@ const styles = StyleSheet.create({
            height:660,
            zIndex: 1
         },
+        Icon:{
+          width: 15,
+          height: 15,
+          top:-10,
+         
+        },
+        mailIcon:{
+          width: 20,
+          height: 20,
+          top:-10,
+        },
+        Instgram:{
+          marginLeft:346,
+          marginTop:-19
+        },
+        Whatsapp:{
+          marginLeft:300,
+          marginTop:-19
+        },
+        facebook:{
+          marginLeft:346,
+          marginTop:-19
+        },
         website_e_mail:{
-              marginLeft:40,
-              marginTop:13,
-              width:116,
+              marginLeft:10,
+              marginTop:10,
+              width:150,
         },
         website_phone_number:{
-          marginLeft:200,
-          marginTop:-21
+          marginLeft:150,
+          marginTop:-18.5
     },
     registerContainer: {
       width: width * 0.9,
