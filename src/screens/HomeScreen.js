@@ -15,16 +15,16 @@ import lenkitTheme from "../../constants/Theme";
 
 const HomeScreen = ({navigation}) => {
   const [isLoaded] = useFonts({
-    "fontawesome" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/fontawesome.ttf"),
-    "Raleway-Black" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/Raleway-Black.ttf"),
-    "Raleway-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/Raleway-SemiBold.ttf"),
-    "Raleway-Medium" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/Raleway-Medium.ttf"),
+    "fontawesome" : require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/fontawesome.ttf"),
+    "Raleway-Black" : require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/Raleway-Black.ttf"),
+    "Raleway-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/Raleway-SemiBold.ttf"),
+    "Raleway-Medium" : require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/Raleway-Medium.ttf"),
 
     
-    "argon": require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/argon.ttf"),
-   "SourceSansPro-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-SemiBold.ttf"),
+    "argon": require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/argon.ttf"),
+   "SourceSansPro-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-SemiBold.ttf"),
    "SourceSansPro-ExtraLightItalic" :
-    require("C:/Users/IT Land 02/Desktop/Lenkit 13-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-ExtraLightItalic.ttf"),
+    require("C:/Users/IT Land 02/Desktop/Lenkit 14-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-ExtraLightItalic.ttf"),
   
     
   });
@@ -67,7 +67,7 @@ const HomeScreen = ({navigation}) => {
       <Block flex space="between" style={styles.padded}>
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
-               <Text  style={styles.subTitle} italic>Welcome To Linkit</Text> 
+               <Text  style={styles.subTitle} italic>Welcome To Lenkit</Text> 
               <Block>
             {/* <Text style={{ fontFamily: "fontawesome" }}>Hello World</Text> */}
               </Block>

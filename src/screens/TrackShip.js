@@ -103,6 +103,7 @@ render() {
           source={require('../../assets/splash.png')}
           style={{ width, height, zIndex: 1 }}
         >
+          
           <Block flex middle>
             <Block style={styles.registerContainer}>
 
@@ -113,7 +114,7 @@ render() {
               <Block flex={0.1} style={styles.socialConnect}>
 
                 <Text  color="white" size={15} style={styles.website_e_mail}
-                onPress={() => Linking.openURL('http://google.com')}>
+                onPress={() => Linking.openURL(`mailto:${this.state.website_e_mail}`)}>
                 
                 <Image
         style={styles.mailIcon}
@@ -133,46 +134,62 @@ render() {
                 </Text>
 
                 {/* **************************** 3ICons *****************************/}
-                <Text color="white" size={15} style={styles.Instgram}
+               
+                {/* <Text color="white" size={30} style={styles.Instgram}
                 onPress={() => Linking.openURL(`${this.state.website_instagram}`)}>
                             <Image
         style={styles.Icon}
         source={require('../../assets/instagram-sketched.png')}
-      />
-                  {"  "}
-               
-                </Text>
+     
+      /> 
 
-                
-                <Text color="white" size={15} style={styles.Whatsapp}
-                onPress={() => Linking.openURL(`${this.state.website_facebook}`)}>
-                             <Image
+
+                </Text>*/}
+                <TouchableOpacity style={styles.Instgram} onPress={()=> Linking.openURL(`${this.state.website_facebook}`)}>
+ 
+                <Image
         style={styles.Icon}
-        source={require('../../assets/facebook.png')}
-      />
-       {"  "}
+        source={require('../../assets/facebook2.png')}
+     
+      />  
+</TouchableOpacity>
+      
+
+
+
+
+<TouchableOpacity style={styles.Whatsapp} onPress={()=> Linking.openURL(`whatsapp://send?text=hello&phone=${this.state.website_whatsapp}`)}>
+ 
+                              <Image
+                            
+                            style={styles.Icon}
+                            source={require('../../assets/whatsapp2.png')}
+                          /> 
+</TouchableOpacity>
+
+
+
+                <Block>
+                {/* <Text color="white" size={30} style={styles.Whatsapp}
+                onPress={() => Linking.openURL(`whatsapp://send?text=hello&phone=${this.state.website_whatsapp}`)}>
+        
+   
                             <Image
                             
         style={styles.Icon}
         source={require('../../assets/whatsapp2.png')}
       />
-                  {"  "}
+                 
                 
-                </Text>
+                </Text> */}
+                </Block>
+              
 
-               
-                {/* <IconS
-                        name="logo-google"
-                        family="ArgonExtra"
-                        size={14}
-                        color={"black"}
-                        style={{ marginTop: 2, marginRight: 5 }}
-                      /> */}
-    
               </Block>
              
 
               <Block>
+           
                  <Input placeholder="Shipment ID" rounded color={theme.COLORS.ERROR} style={styles.inputShip}  returnKeyLabel = {"next"}
                      onChangeText={(text) => this.setState({shipValue:text})}  />
                  {/* <TextInput ref= {(el) => { osama = el; }} onchangeText = {osama => onChangeText(osama)} value={osama} /> */}
@@ -183,6 +200,13 @@ render() {
                          <Text style={styles.btnText}>Track your Shipment</Text>
 
                  </TouchableOpacity>    
+                 <TouchableOpacity style={styles.Loginbutton} onPress={() => 
+                     this.props.navigation.navigate("Login")
+               } >
+                
+                         <Text style={styles.loginbtnText}>Login</Text>
+
+                 </TouchableOpacity> 
                  {/* <Text>{osama}</Text> */}
 
 
@@ -212,15 +236,22 @@ render() {
 
 
 const styles = StyleSheet.create({
-   
+  LoginText:{
+
+    color: "#990000",
+        fontSize: 20,
+        marginLeft:-30,
+        top:20,
+        
+  },
         inputShip: {
             paddingTop: 13,
             top: 535 ,
-            width: width * 0.8,
+            width: width * 0.7,
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 100/2,
-            marginLeft: 10
+            marginLeft: 40
         },
         img:{
           width: width * 0.9,
@@ -243,11 +274,15 @@ const styles = StyleSheet.create({
           marginTop:-19
         },
         Whatsapp:{
-          marginLeft:300,
-          marginTop:-19
+          marginLeft:346,
+          marginTop:5
+        },
+        Login:{
+          marginLeft:346,
+          marginTop:60
         },
         facebook:{
-          marginLeft:346,
+          marginLeft:320,
           marginTop:-19
         },
         website_e_mail:{
@@ -256,13 +291,13 @@ const styles = StyleSheet.create({
               width:150,
         },
         website_phone_number:{
-          marginLeft:150,
+          marginLeft:158,
           marginTop:-18.5
     },
     registerContainer: {
       width: width * 0.9,
       height: height * 0.78,
-      backgroundColor: "#F4F5F7",
+      backgroundColor: "#fff",
       borderRadius: 4,
       shadowColor: lenkitTheme.COLORS.BLACK,
       shadowOffset: {
@@ -277,7 +312,8 @@ const styles = StyleSheet.create({
     socialConnect: {
       backgroundColor: "#990000",
       borderBottomWidth: StyleSheet.hairlineWidth,
-      borderColor: "#8898AA"
+      borderColor: "#8898AA",
+    
     },
     socialButtons: {
       width: 120,
@@ -311,20 +347,36 @@ const styles = StyleSheet.create({
     },
       button: {
         // width: 300,
-        width: width * 0.9,
+        width: width * 0.7,
         marginTop: 85,
         top: 450,
-      //   marginLeft: 110,
+        marginLeft: 40,
         backgroundColor: "#990000",
-        padding: 15,
+        padding: 10,
         borderRadius: 50,
+      },
+      Loginbutton:{
+// width: 300,
+      width: width * 0.2,
+      
+      top: -175,
+      marginLeft: 300,
+      backgroundColor: "white",
+      padding: 0,
+      // borderRadius: 50,
       },
       btnText: {
         color: "white",
         fontSize: 20,
         justifyContent: "center",
         textAlign: "center",
-      }
+      },
+      loginbtnText:{
+        color: "#990000",
+        fontSize: 20,
+        justifyContent: "center",
+        textAlign: "center",
+      },
   });
 
 export default TrackShip;

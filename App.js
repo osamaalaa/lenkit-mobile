@@ -12,7 +12,7 @@ const navigator = createStackNavigator(
 
   {
     Home: HomeScreen,
-    Components: LoginScreen,
+    Login: LoginScreen,
     Test: Components,
     Track: TrackShip,
 
