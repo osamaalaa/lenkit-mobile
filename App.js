@@ -6,6 +6,8 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import Components from './src/screens/ComponentsScreen'
 import TrackShip from './src/screens/TrackShip';
+import NewShipment from './src/screens/newShipment';
+import ShipmentsList from './src/screens/ShipmentsList';
 import { useFonts } from '@use-expo/font';
 
 const navigator = createStackNavigator(
@@ -15,7 +17,8 @@ const navigator = createStackNavigator(
     Login: LoginScreen,
     Test: Components,
     Track: TrackShip,
-
+    NewShipmentScreen:NewShipment,
+    ShipmentsListScreen:ShipmentsList
   },
   {
     initialRouteName: "Home",

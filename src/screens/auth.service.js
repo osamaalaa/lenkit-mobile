@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import AsyncStorage from '@react-native-community/async-storage';
 const API_URL = "https:/192.168.1.2/4700/admin/";
 
 class AuthService {
