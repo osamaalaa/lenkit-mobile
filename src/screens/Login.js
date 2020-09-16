@@ -7,15 +7,18 @@ import LoginComp from '../../components/LoginComp';
 
 import React from 'react';
 import axios from 'axios';
-import {Slider, Text, StyleSheet, View, TextInput , Image , TouchableOpacity , Button} from 'react-native';
+import {BackAndroid,Slider, Text, StyleSheet, View, TextInput , Image , TouchableOpacity , Button} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ValidationComponent from 'react-native-form-validator';
 export default class LoginScreen extends React.Component{
-    
+     
   state={
     user_email:"",
     user_password:"",
   }
+  
+   emailvalidation='';
+   passvalidtation='';
    storeData = async (value) => {
     try {
       await AsyncStorage.setItem('@storage_Key', value)
@@ -23,8 +26,52 @@ export default class LoginScreen extends React.Component{
       console.log("Inside Store Data Errror" ,error.message)
     }
   }
+  validateEmail=(user_email)=>{
+              if(user_email=="")
+              {           this.emailvalidation="Enter Email";
+                          console.log("Email empty");
+                          return false;
+              }
+              else
+              {
+                  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    if (reg.test(user_email) === false) 
+                    {
+                   console.log("Email is Not Correct");
+                   this.emailvalidation="Email is Not Correct";
+                      return false;
+            
+            
+                    }
+                    else
+                    {
+                      console.log("Email is  Correct");
+                      return true;
+                    }
+
+              }
+  }
+
+
+  validatePassword=(user_password)=>{
+    if(user_password=="")
+    {           this.passvalidtation="Enter Password";
+                 console.log("PAss is  emptty");
+                return false;
+    }
+    else
+    {
+         console.log("PAss is  Correct");
+         return true
+
+    }
+}
+
   async onLoginPressed() {
-    let data={
+    let Emailvalidationflag=this.validateEmail(this.state.user_email);
+    let passvalidationflag=this.validatePassword(this.state.user_password);
+    if(Emailvalidationflag && passvalidationflag)
+    {let data={
       user_email:this.state.user_email,
       user_password:this.state.user_password,
     }
@@ -52,8 +99,13 @@ export default class LoginScreen extends React.Component{
       alert("Wrong Password Or E-mail");
     }
     }
-    
-  
+    else
+    {
+             console.log("no thing")    
+             console.log("emailvalidation",this.emailvalidation)
+             console.log("passvalidtation",this.passvalidtation);
+    }
+  }
   render(){
 
     return (
@@ -66,18 +118,23 @@ export default class LoginScreen extends React.Component{
       />
       
         <View>
-          <TextInput placeholder="Enter Email" style={styles.inputStyle} 
+          <TextInput 
+         
+          placeholder="Enter Email" style={styles.inputStyle} 
           onChangeText={(text) => this.setState({user_email: text})}
           autoCompleteType="email"
           />
+          <Text style={styles.errormessage}>{this.emailvalidation}</Text>
             
           <TextInput
+          
             secureTextEntry={true}
             placeholder="Enter Password"
             style={styles.inputStyle}
             autoCompleteType="password"
             onChangeText={(text) => this.setState({user_password: text})}
           />
+          <Text style={styles.errormessage}>{this.passvalidtation}</Text>
 
             <TouchableOpacity style={styles.button} onPress={() =>
                               this.onLoginPressed()
@@ -86,7 +143,9 @@ export default class LoginScreen extends React.Component{
                            } >
                 <Text style={styles.btnText}>Sign in</Text>
             </TouchableOpacity>
-            
+            {/* <Text>
+            {this.getErrorMessages()}
+          </Text> */}
         </View>
      
       </View>
@@ -97,6 +156,11 @@ export default class LoginScreen extends React.Component{
 }//end class
 
 const styles = StyleSheet.create({
+  errormessage:{
+    color:"red",
+    marginLeft:30
+    
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
