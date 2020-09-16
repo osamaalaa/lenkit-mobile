@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import {ImageBackgroun,dAppRegistry, SectionList,TextInput,Dimensions,View ,Text , StyleSheet , TouchableOpacity,Image} from 'react-native';
 import axios from 'axios';
 import lenkitTheme from "../../constants/Theme";
@@ -7,6 +8,14 @@ import { Picker } from 'react-native-picker-dropdown'
 import { Input } from 'react-native-elements';
 const { height, width } = Dimensions.get("screen");
 import { Block, Button, theme } from "galio-framework";
+=======
+import {ImageBackgroun,dAppRegistry, SectionList,TextInput,View ,Text , StyleSheet , TouchableOpacity,Image,Dimensions} from 'react-native';
+import axios from 'axios';
+const { height, width } = Dimensions.get("screen");
+import lenkitTheme from "../../constants/Theme";
+import { Picker } from 'react-native-picker-dropdown'
+import { Input } from 'react-native-elements';
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
 
 import {
   Dropdown }
@@ -15,6 +24,7 @@ import {
 export default class NewShipment extends React.Component{
   constructor(props){
     super(props);
+<<<<<<< HEAD
     this.state = { 
       language: 'js',
      country: 'uk' 
@@ -30,6 +40,15 @@ export default class NewShipment extends React.Component{
   handleSendingWayChange(country) {
     this.setState({ country })
   }
+=======
+    this.state = { language: 'js'  }
+    this.onValueChange = this.handleValueChange.bind(this)
+  }
+
+  handleValueChange(language) {
+    this.setState({ language })
+  }
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
 
 
 
@@ -37,6 +56,7 @@ export default class NewShipment extends React.Component{
   
   render(){
     return (
+<<<<<<< HEAD
       <>
       <View style={styles.container}>
  <Text style={styles.header}>Sender Information</Text>
@@ -54,12 +74,22 @@ export default class NewShipment extends React.Component{
           textStyle={styles.pickerText}
       
 
+=======
+      <View style={styles.container}>
+     <Text style={styles.Sendwaylabel}>Sending Way</Text>
+         <Picker style={styles.PickerSender}
+          selectedValue={this.state.language}
+          onValueChange={this.onValueChange}
+          mode="dialog"
+          textStyle={styles.pickerText}
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
         >
           
           <Picker.Item label="Drop Off" value="drop off" />
           <Picker.Item label="Pick Up" value="pick up" />
         </Picker>
         <Text style={styles.errormessage}>{this.emailvalidation}</Text>
+<<<<<<< HEAD
       <Text style={styles.Sendwaylabel}>Choose Your City </Text>
          <Picker style={styles.PickerSender}
           selectedValue={this.state.language}
@@ -68,12 +98,24 @@ export default class NewShipment extends React.Component{
           prompt="Choose Your City"
           textStyle={styles.pickerText}
           promptStyle={styles.pickerprompt}
+=======
+
+     
+
+      <Text style={styles.Sendwaylabel}>Choose Youur City </Text>
+         <Picker style={styles.PickerSender}
+          selectedValue={this.state.language}
+          onValueChange={this.onValueChange}
+          mode="dialog"
+          textStyle={styles.pickerText}
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
         >
           
           <Picker.Item label="Alexandria" value="Alexandria" />
           <Picker.Item label="Cairo" value="Cairo" />
         </Picker>
         <Text style={styles.errormessage}>{this.emailvalidation}</Text>
+<<<<<<< HEAD
        
       
       <TextInput 
@@ -115,11 +157,36 @@ export default class NewShipment extends React.Component{
          
    </View>
    </>
+=======
+        <Input
+        style={styles.inputStyle2}
+        placeholder='Please Enter Address of the Sender '
+        onChangeText={value => this.setState({ comment: value })}
+      />
+      <Text style={styles.errormessage}>{this.emailvalidation}</Text>
+      <TextInput 
+         
+         placeholder="Please EntAddress of the Sender"
+          style={styles.inputStyle} 
+         onChangeText={(text) => this.setState({user_email: text})}
+         autoCompleteType="email"
+         />
+{/* <Input
+  placeholder='INPUT WITH ERROR MESSAGE'
+  errorStyle={{ color: 'red' }}
+  errorMessage='ENTER A VALID ERROR HERE'
+/> */}
+
+{/* <Input placeholder="Password" secureTextEntry={true} /> */}
+     
+      </View>
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
     );
   }
 };
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   nextIcon:{
     top:-27,
     height:height-theme.SIZES.BASE*52,
@@ -155,6 +222,19 @@ const styles = StyleSheet.create({
     fontSize:18,
     margin:10
   
+=======
+  inputStyle: {
+    marginTop: 20,
+    width: 400,
+    height: 40,
+    paddingHorizontal: 10,
+    borderRadius: 0,
+    backgroundColor: '#fff',
+    color: '#990000',
+    fontSize:18,
+   borderColor:"#0C0B0B",
+   borderWidth:1,
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
   },
   inputStyle2 :{
    
@@ -171,6 +251,7 @@ const styles = StyleSheet.create({
   }, 
   
   PickerSender:{
+<<<<<<< HEAD
     // top:5,
     // color: '#990000',
     
@@ -200,6 +281,15 @@ const styles = StyleSheet.create({
     backgroundColor:"#fff",
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+=======
+    top:5,
+    color: '#990000',
+  },
+  container: {
+    flex: 1,
+    paddingTop: 22,
+    backgroundColor:"#fff"
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
    },
    sectionHeader: {
      paddingTop: 2,

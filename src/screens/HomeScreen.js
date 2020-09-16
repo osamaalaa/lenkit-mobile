@@ -14,6 +14,7 @@ import lenkitTheme from "../../constants/Theme";
 
 
 const HomeScreen = ({navigation}) => {
+<<<<<<< HEAD
   // const [isLoaded] = useFonts({
   //   "fontawesome" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/fontawesome.ttf"),
   //   "Raleway-Black" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/Raleway-Black.ttf"),
@@ -25,6 +26,19 @@ const HomeScreen = ({navigation}) => {
   //  "SourceSansPro-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-SemiBold.ttf"),
   //  "SourceSansPro-ExtraLightItalic" :
   //   require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-ExtraLightItalic.ttf"),
+=======
+  const [isLoaded] = useFonts({
+    "fontawesome" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/fontawesome.ttf"),
+    "Raleway-Black" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/Raleway-Black.ttf"),
+    "Raleway-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/Raleway-SemiBold.ttf"),
+    "Raleway-Medium" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/Raleway-Medium.ttf"),
+
+    
+    "argon": require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/argon.ttf"),
+   "SourceSansPro-SemiBold" : require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-SemiBold.ttf"),
+   "SourceSansPro-ExtraLightItalic" :
+    require("C:/Users/IT Land 02/Desktop/Lenkit 15-9-2020/lenkit-mobile/assets/fonts/SourceSansPro-ExtraLightItalic.ttf"),
+>>>>>>> dc6e8872e4f0242520acf03fa11f0371b0f0700d
   
     
   // });
