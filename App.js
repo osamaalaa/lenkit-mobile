@@ -7,7 +7,12 @@ import { View, Text } from 'react-native';
 import Components from './src/screens/ComponentsScreen'
 import TrackShip from './src/screens/TrackShip';
 import NewShipment from './src/screens/newShipment';
+import ReceiverInfo from './src/screens/ReceiverInfo'
 import ShipmentsList from './src/screens/ShipmentsList';
+import ShipmentInfo from './src/screens/ShipmentInfo'
+import ConfirmSuceeded from './src/screens/ConfirmSuceeded'
+import ToastNotification from 'react-native-toast-notification'
+
 import { useFonts } from '@use-expo/font';
 
 const navigator = createStackNavigator(
@@ -18,7 +23,10 @@ const navigator = createStackNavigator(
     Test: Components,
     Track: TrackShip,
     NewShipmentScreen:NewShipment,
-    ShipmentsListScreen:ShipmentsList
+    ShipmentsListScreen:ShipmentsList,
+    RecieverInfoScreen:ReceiverInfo,
+    ShipmentInfoScreen:ShipmentInfo,
+    ConfirmSuceededScreen:ConfirmSuceeded,
   },
   {
     initialRouteName: "Home",

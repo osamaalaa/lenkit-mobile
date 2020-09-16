@@ -7,7 +7,7 @@ import LoginComp from '../../components/LoginComp';
 
 import React from 'react';
 import axios from 'axios';
-import {Slider, Text, StyleSheet, View, TextInput , Image , TouchableOpacity , Button} from 'react-native';
+import {BackAndroid,Slider, Text, StyleSheet, View, TextInput , Image , TouchableOpacity , Button} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ValidationComponent from 'react-native-form-validator';
 export default class LoginScreen extends React.Component{

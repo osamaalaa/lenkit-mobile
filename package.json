@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@react-native-community/async-storage": "^1.12.0",
     "@react-native-community/masked-view": "0.1.5",
+    "@react-native-community/picker": "^1.7.1",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "@use-expo/font": "^2.0.0",
@@ -23,6 +24,7 @@
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-dropdown-picker": "^3.6.8",
     "react-native-elements": "^2.3.2",
     "react-native-form-validator": "^0.3.2",
     "react-native-gesture-handler": "~1.5.0",
@@ -32,6 +34,7 @@
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-svg": "^12.1.0",
+    "react-native-toast-notification": "^1.1.2",
     "react-native-vector-icons": "^7.1.0",
     "react-navigation": "^4.1.0",
     "react-navigation-stack": "^2.0.16"
